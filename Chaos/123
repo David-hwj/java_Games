@@ -1,0 +1,72 @@
+package Chaos;
+
+import java.awt.Color;
+import java.awt.Graphics;
+
+import javax.swing.JFrame;
+
+public class Manager extends JFrame {
+	
+    public static Point[] GetPointsMG(Point p,int d,int dx,int dy){
+		Point points[] =new Point[20];
+		Point tmp=new Point();
+		int px=(int)p.getX();int py=(int)p.getY();
+		//第一层八个点
+							tmp.x=px+dx*2;		tmp.y=py-dy*2;	
+		points[0]=new Point(px+dx*2,py-dy*2);		tmp.x=px+dx*2+d;		tmp.y=py-dy*2;
+		points[1]=new Point(px+dx*2+d,py-dy*2);		tmp.x=px+dx*2+d*2;		tmp.y=py-dy*2;
+		points[2]=new Point(px+dx*2+d*2,py-dy*2);		tmp.x=px+dx;		tmp.y=py-dy;
+		points[3]=new Point(px+dx,py-dy);	tmp.x=px+dx+d*2;		tmp.y=py-dy;
+		points[4]=new Point(px+dx+d*2,py-dy);	tmp.x=px;		tmp.y=py;
+		points[5]=new Point(px,py);	tmp.x=px+d;		tmp.y=py;
+		points[6]=new Point(px+d,py);	tmp.x=px+d*2;		tmp.y=py;
+		points[7]=new Point(px+d*2,py);	
+		//第二层四个点
+						tmp.x=px+dx*2;		tmp.y=py-dy*2-d;
+		points[8]=new Point(px+dx*2,py-dy*2-d);	tmp.x=px+dx*2+d*2;		tmp.y=py-dy*2-d;
+		points[9]=new Point(px+dx*2+d*2,py-dy*2-d);	tmp.x=px;		tmp.y=py-d;
+		points[10]=new Point(px,py-d);	tmp.x=px+d*2;		tmp.y=py-d;
+		points[11]=new Point(px+d*2,py-d);
+		//第三层八个点
+							tmp.x=px+dx*2;		tmp.y=py-dy*2-d*2;	
+		points[12]=new Point(px+dx*2,py-dy*2-d*2);		tmp.x=px+dx*2+d;		tmp.y=py-dy*2-d*2;
+		points[13]=new Point(px+dx*2+d,py-dy*2-d*2);		tmp.x=px+dx*2+d*2;		tmp.y=py-dy*2-d*2;
+		points[14]=new Point(px+dx*2+d*2,py-dy*2-d*2);		tmp.x=px+dx;		tmp.y=py-dy-d*2;
+		points[15]=new Point(px+dx,py-dy-d*2);		tmp.x=px+dx+d*2;		tmp.y=py-dy-d*2;
+		points[16]=new Point(px+dx+d*2,py-dy-d*2);		tmp.x=px;		tmp.y=py-d*2;
+		points[17]=new Point(px,py-d*2);		tmp.x=px+d;		tmp.y=py-d*2;
+		points[18]=new Point(px+d,py-d*2);		tmp.x=px+d*2;		tmp.y=py-d*2;
+		points[19]=new Point(px+d*2,py-d*2);
+		
+		return points;
+	}
+	
+    
+    
+	Color color = Color.black;// 颜色
+	
+	public static void main(String[] args) {
+		Manager jframe = new Manager();
+		jframe.Draw();
+	}
+
+	/*****************************************************************/
+	public void Draw() {
+		setSize(800, 600);
+		setTitle("混沌和分形");
+		setLocation(200, 100);
+		setResizable(false);
+		setVisible(true);
+	}
+	public void paint (Graphics g){
+		g=this.getGraphics();
+		g.setColor(Color.black);
+		
+		for(int i=0;i<9;i++){
+				g.drawLine(Array[i][0], Array[i][1], Array[i][2], Array[i][3]);
+		}
+		
+		
+	}
+
+}
